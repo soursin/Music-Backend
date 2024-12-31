@@ -10,7 +10,7 @@ const userSchema = new Schema({
     user_id : {type : String, unique : true, require: true},
     email : {type : String ,unique: true, require: true},
     password : {type: String , require: true},
-    role : {type:String , enum:Object.values(role) ,default:"Viewer"}
+    role : {type:String , enum:Object.values(role) ,default:"Viewer"},
 })
 
 
@@ -18,7 +18,8 @@ const artistSchema = new Schema({
     artist_id : {type: String, unique: true, require : true},
     artist_name : {type: String , require: true},
     grammy : {type: Boolean , require : true},
-    hidden : {type : Boolean , require : true}
+    hidden : {type : Boolean , require : true},
+    userId : {type:mongoose.Types.ObjectId,require: true, ref:"users"}
 })
 
 const albumSchema = new Schema({
@@ -39,7 +40,7 @@ const trackSchema = new Schema({
 })
 
 const likeSchema = new Schema({
-    favorite_id : {type: mongoose.Types.ObjectId , require: true, ref:"tracks"}
+    track_id : {type: mongoose.Types.ObjectId , require: true, ref:"tracks"}
 })
 
 
